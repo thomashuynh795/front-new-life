@@ -31,3 +31,6 @@ anyhow = "1"
 
 [dev-dependencies]
 tower = { workspace = true }
+
+[lints]
+workspace = true

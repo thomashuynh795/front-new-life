@@ -10,3 +10,6 @@ sea-orm = { workspace = true }
 anyhow = "1"
 
 database-model = { path = "../database-model" }
+
+[lints]
+workspace = true

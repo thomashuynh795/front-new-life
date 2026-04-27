@@ -1,3 +1,9 @@
+#![deny(clippy::unwrap_used)]
+#![deny(clippy::expect_used)]
+#![deny(clippy::panic)]
+#![deny(clippy::todo)]
+#![deny(clippy::unimplemented)]
+
 use anyhow::{Context, Result};
 use api::{app, config, db, modules};
 use axum::http::Method;

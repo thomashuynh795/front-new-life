@@ -43,3 +43,53 @@ tower = { version = "0.5.2", features = ["util"] }
 [profile.dev]
 debug = true
 opt-level = 0
+
+
+[workspace.lints.rust]
+warnings = "deny"
+unsafe_code = "forbid"
+unreachable_code = "deny"
+unreachable_patterns = "deny"
+unused_must_use = "deny"
+
+[workspace.lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+todo = "deny"
+unimplemented = "deny"
+unreachable = "deny"
+unwrap_err = "deny"
+indexing_slicing = "deny"
+string_slice = "deny"
+all = { level = "deny", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+let_underscore_future = "deny"
+let_underscore_lock = "deny"
+mem_forget = "deny"
+box_leak = "deny"
+exit = "deny"
+dbg_macro = "deny"
+print_stdout = "warn"
+print_stderr = "warn"
+wildcard_imports = "warn"
+enum_glob_use = "warn"
+too_many_arguments = "warn"
+too_many_lines = "warn"
+cognitive_complexity = "warn"
+result_large_err = "warn"
+must_use_candidate = "warn"
+needless_pass_by_value = "warn"
+redundant_clone = "warn"
+needless_borrow = "warn"
+cast_possible_truncation = "warn"
+cast_possible_wrap = "warn"
+cast_sign_loss = "warn"
+cast_precision_loss = "warn"
+result_unit_err = "deny"
+explicit_iter_loop = "warn"
+explicit_into_iter_loop = "warn"
+manual_let_else = "warn"
+match_same_arms = "warn"
+single_match_else = "warn"
