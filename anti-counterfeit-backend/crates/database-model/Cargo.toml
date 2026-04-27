@@ -1,0 +1,10 @@
+[package]
+name = "database-model"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+sea-orm = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+serde = { workspace = true }
