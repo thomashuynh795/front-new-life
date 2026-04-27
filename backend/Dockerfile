@@ -20,10 +20,6 @@ RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/
 
 COPY --from=builder /app/target/release/api /app/api
 
-# Si ton code charge un .env obligatoire au démarrage, garder cette ligne.
-# Sinon, la retirer.
-COPY .env /app/.env
-
 ENV ADDRESS=0.0.0.0:8080
 EXPOSE 8080
 

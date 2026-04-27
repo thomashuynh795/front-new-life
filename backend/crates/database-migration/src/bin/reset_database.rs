@@ -48,7 +48,6 @@ async fn main() -> anyhow::Result<()> {
     add_fk_audit_events_tag(&db).await?;
     add_indexes(&db).await?;
 
-    println!("The database has been reset.");
     Ok(())
 }
 
