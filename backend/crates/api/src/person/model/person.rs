@@ -1,30 +1,39 @@
 use crate::person::person_type_enum::PersonType;
 
 pub struct Person {
-    person_type: PersonType,
+    legal_person_type: PersonType,
     first_name: String,
     last_name: String,
 }
 
 impl Person {
-    pub const fn new(person_type: PersonType, first_name: String, last_name: String) -> Self {
+    #[must_use]
+    pub const fn new(legal_person_type: PersonType, first_name: String, last_name: String) -> Self {
         Self {
+            legal_person_type,
             first_name,
             last_name,
-            person_type,
         }
     }
 
+    #[must_use]
     pub const fn person_type(&self) -> &PersonType {
-        &self.person_type
+        &self.legal_person_type
     }
 
+    #[must_use]
     pub fn first_name(&self) -> &str {
         &self.first_name
     }
 
+    #[must_use]
     pub fn last_name(&self) -> &str {
         &self.last_name
+    }
+
+    #[must_use]
+    pub const fn legal_person_type(&self) -> &PersonType {
+        &self.legal_person_type
     }
 }
 
@@ -41,6 +50,6 @@ mod tests {
 
         assert!(matches!(person.person_type(), PersonType::NaturalPerson));
         assert_eq!(person.first_name(), "John");
-        assert_eq!(person.last_name(), "Doe")
+        assert_eq!(person.last_name(), "Doe");
     }
 }
