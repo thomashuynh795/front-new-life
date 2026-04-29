@@ -1,4 +1,4 @@
-mod model;
+mod models;
 pub mod person_type_enum;
 
-pub use model::person::Person;
+pub use models::person::Person;
