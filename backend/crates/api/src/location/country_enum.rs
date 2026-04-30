@@ -8,6 +8,7 @@ pub enum Country {
     Spain,
     UnitedKingdom,
 }
+
 impl Country {
     #[must_use]
     pub const fn get_code(&self) -> &str {
