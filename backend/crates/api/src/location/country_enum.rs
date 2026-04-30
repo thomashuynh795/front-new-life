@@ -16,9 +16,9 @@ impl Country {
             Self::France => "FR",
             Self::Germany => "DE",
             Self::Luxembourg => "LU",
-            Self::Monaco => "MO",
+            Self::Monaco => "MC",
             Self::Spain => "ES",
-            Self::UnitedKingdom => "UK",
+            Self::UnitedKingdom => "GB",
         }
     }
 
@@ -30,7 +30,7 @@ impl Country {
             Self::Luxembourg => "Luxembourg",
             Self::Monaco => "Monaco",
             Self::Spain => "Spain",
-            Self::UnitedKingdom => "United Kingdom",
+            Self::UnitedKingdom => "United Kingdom of Great Britain and Northern Ireland",
         }
     }
 
@@ -44,5 +44,52 @@ impl Country {
             | Self::Spain
             | Self::UnitedKingdom => Continent::Europe,
         }
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn should_return_country_code() {
+        assert_eq!(Country::France.get_code(), "FR");
+        assert_eq!(Country::Germany.get_code(), "DE");
+        assert_eq!(Country::Luxembourg.get_code(), "LU");
+        assert_eq!(Country::Monaco.get_code(), "MC");
+        assert_eq!(Country::Spain.get_code(), "ES");
+        assert_eq!(Country::UnitedKingdom.get_code(), "GB");
+    }
+
+    #[test]
+    fn should_return_country_name() {
+        assert_eq!(Country::France.get_name(), "France");
+        assert_eq!(Country::Germany.get_name(), "Germany");
+        assert_eq!(Country::Luxembourg.get_name(), "Luxembourg");
+        assert_eq!(Country::Monaco.get_name(), "Monaco");
+        assert_eq!(Country::Spain.get_name(), "Spain");
+        assert_eq!(
+            Country::UnitedKingdom.get_name(),
+            "United Kingdom of Great Britain and Northern Ireland"
+        );
+    }
+
+    #[test]
+    fn should_return_country_continent() {
+        assert!(matches!(Country::France.get_continent(), Continent::Europe));
+        assert!(matches!(
+            Country::Germany.get_continent(),
+            Continent::Europe
+        ));
+        assert!(matches!(
+            Country::Luxembourg.get_continent(),
+            Continent::Europe
+        ));
+        assert!(matches!(Country::Monaco.get_continent(), Continent::Europe));
+        assert!(matches!(Country::Spain.get_continent(), Continent::Europe));
+        assert!(matches!(
+            Country::UnitedKingdom.get_continent(),
+            Continent::Europe
+        ));
     }
 }
