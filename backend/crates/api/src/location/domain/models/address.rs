@@ -1,4 +1,4 @@
-use crate::location::{country_enum::Country, thoroughfare_enum::Thoroughfare};
+use crate::location::domain::{country_enum::Country, thoroughfare_enum::Thoroughfare};
 
 pub struct Address {
     country: Country,

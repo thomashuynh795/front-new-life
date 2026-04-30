@@ -1,4 +1,4 @@
-use crate::location::region_enum::Region;
+use crate::location::domain::region_enum::Region;
 
 pub enum Country {
     France,
@@ -19,6 +19,18 @@ impl Country {
             Self::Monaco => "MC",
             Self::Spain => "ES",
             Self::UnitedKingdom => "GB",
+        }
+    }
+
+    #[must_use]
+    pub const fn get_iso_3166_alpha_3_code(&self) -> &str {
+        match self {
+            Self::France => "FRA",
+            Self::Germany => "DEU",
+            Self::Luxembourg => "LUX",
+            Self::Monaco => "MCO",
+            Self::Spain => "ESP",
+            Self::UnitedKingdom => "GBR",
         }
     }
 
@@ -64,7 +76,7 @@ mod test {
     use super::*;
 
     #[test]
-    fn should_return_country_code() {
+    fn should_return_country_iso_3166_alpha_2_code() {
         assert_eq!(Country::France.get_iso_3166_alpha_2_code(), "FR");
         assert_eq!(Country::Germany.get_iso_3166_alpha_2_code(), "DE");
         assert_eq!(Country::Luxembourg.get_iso_3166_alpha_2_code(), "LU");
@@ -74,7 +86,17 @@ mod test {
     }
 
     #[test]
-    fn should_return_country_name() {
+    fn should_return_country_iso_3166_alpha_3_code() {
+        assert_eq!(Country::France.get_iso_3166_alpha_3_code(), "FRA");
+        assert_eq!(Country::Germany.get_iso_3166_alpha_3_code(), "DEU");
+        assert_eq!(Country::Luxembourg.get_iso_3166_alpha_3_code(), "LUX");
+        assert_eq!(Country::Monaco.get_iso_3166_alpha_3_code(), "MCO");
+        assert_eq!(Country::Spain.get_iso_3166_alpha_3_code(), "ESP");
+        assert_eq!(Country::UnitedKingdom.get_iso_3166_alpha_3_code(), "GBR");
+    }
+
+    #[test]
+    fn should_return_official_country_name() {
         assert_eq!(Country::France.get_official_name(), "France");
         assert_eq!(Country::Germany.get_official_name(), "Germany");
         assert_eq!(Country::Luxembourg.get_official_name(), "Luxembourg");
