@@ -1,4 +1,4 @@
-use crate::location::continent_enum::Region;
+use crate::location::region_enum::Region;
 
 pub enum Country {
     France,
@@ -11,7 +11,7 @@ pub enum Country {
 
 impl Country {
     #[must_use]
-    pub const fn get_code(&self) -> &str {
+    pub const fn get_iso_3166_alpha_2_code(&self) -> &str {
         match self {
             Self::France => "FR",
             Self::Germany => "DE",
@@ -23,7 +23,7 @@ impl Country {
     }
 
     #[must_use]
-    pub const fn get_name(&self) -> &str {
+    pub const fn get_official_name(&self) -> &str {
         match self {
             Self::France => "France",
             Self::Germany => "Germany",
@@ -31,6 +31,18 @@ impl Country {
             Self::Monaco => "Monaco",
             Self::Spain => "Spain",
             Self::UnitedKingdom => "United Kingdom of Great Britain and Northern Ireland",
+        }
+    }
+
+    #[must_use]
+    pub const fn get_common_name(&self) -> &str {
+        match self {
+            Self::France => "France",
+            Self::Germany => "Germany",
+            Self::Luxembourg => "Luxembourg",
+            Self::Monaco => "Monaco",
+            Self::Spain => "Spain",
+            Self::UnitedKingdom => "United Kingdom",
         }
     }
 
@@ -53,23 +65,23 @@ mod test {
 
     #[test]
     fn should_return_country_code() {
-        assert_eq!(Country::France.get_code(), "FR");
-        assert_eq!(Country::Germany.get_code(), "DE");
-        assert_eq!(Country::Luxembourg.get_code(), "LU");
-        assert_eq!(Country::Monaco.get_code(), "MC");
-        assert_eq!(Country::Spain.get_code(), "ES");
-        assert_eq!(Country::UnitedKingdom.get_code(), "GB");
+        assert_eq!(Country::France.get_iso_3166_alpha_2_code(), "FR");
+        assert_eq!(Country::Germany.get_iso_3166_alpha_2_code(), "DE");
+        assert_eq!(Country::Luxembourg.get_iso_3166_alpha_2_code(), "LU");
+        assert_eq!(Country::Monaco.get_iso_3166_alpha_2_code(), "MC");
+        assert_eq!(Country::Spain.get_iso_3166_alpha_2_code(), "ES");
+        assert_eq!(Country::UnitedKingdom.get_iso_3166_alpha_2_code(), "GB");
     }
 
     #[test]
     fn should_return_country_name() {
-        assert_eq!(Country::France.get_name(), "France");
-        assert_eq!(Country::Germany.get_name(), "Germany");
-        assert_eq!(Country::Luxembourg.get_name(), "Luxembourg");
-        assert_eq!(Country::Monaco.get_name(), "Monaco");
-        assert_eq!(Country::Spain.get_name(), "Spain");
+        assert_eq!(Country::France.get_official_name(), "France");
+        assert_eq!(Country::Germany.get_official_name(), "Germany");
+        assert_eq!(Country::Luxembourg.get_official_name(), "Luxembourg");
+        assert_eq!(Country::Monaco.get_official_name(), "Monaco");
+        assert_eq!(Country::Spain.get_official_name(), "Spain");
         assert_eq!(
-            Country::UnitedKingdom.get_name(),
+            Country::UnitedKingdom.get_official_name(),
             "United Kingdom of Great Britain and Northern Ireland"
         );
     }
