@@ -17,22 +17,22 @@ impl Person {
     }
 
     #[must_use]
-    pub const fn person_type(&self) -> &PersonType {
+    pub const fn get_person_type(&self) -> &PersonType {
         &self.legal_person_type
     }
 
     #[must_use]
-    pub fn first_name(&self) -> &str {
+    pub fn get_first_name(&self) -> &str {
         &self.first_name
     }
 
     #[must_use]
-    pub fn last_name(&self) -> &str {
+    pub fn get_last_name(&self) -> &str {
         &self.last_name
     }
 
     #[must_use]
-    pub const fn legal_person_type(&self) -> &PersonType {
+    pub const fn get_legal_person_type(&self) -> &PersonType {
         &self.legal_person_type
     }
 }
@@ -40,6 +40,7 @@ impl Person {
 #[cfg(test)]
 mod tests {
     use super::*;
+
     #[test]
     fn create_person() {
         let person = Person::new(
@@ -48,8 +49,11 @@ mod tests {
             String::from("Doe"),
         );
 
-        assert!(matches!(person.person_type(), PersonType::NaturalPerson));
-        assert_eq!(person.first_name(), "John");
-        assert_eq!(person.last_name(), "Doe");
+        assert!(matches!(
+            person.get_person_type(),
+            PersonType::NaturalPerson
+        ));
+        assert!(matches!(person.get_first_name(), "John"));
+        assert!(matches!(person.get_last_name(), "Doe"));
     }
 }
