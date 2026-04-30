@@ -1,4 +1,4 @@
-use crate::location::continent_enum::Continent;
+use crate::location::continent_enum::Region;
 
 pub enum Country {
     France,
@@ -35,14 +35,14 @@ impl Country {
     }
 
     #[must_use]
-    pub const fn get_continent(&self) -> Continent {
+    pub const fn get_region(&self) -> Region {
         match self {
             Self::France
             | Self::Germany
             | Self::Luxembourg
             | Self::Monaco
             | Self::Spain
-            | Self::UnitedKingdom => Continent::Europe,
+            | Self::UnitedKingdom => Region::Europe,
         }
     }
 }
@@ -76,20 +76,14 @@ mod test {
 
     #[test]
     fn should_return_country_continent() {
-        assert!(matches!(Country::France.get_continent(), Continent::Europe));
+        assert!(matches!(Country::France.get_region(), Region::Europe));
+        assert!(matches!(Country::Germany.get_region(), Region::Europe));
+        assert!(matches!(Country::Luxembourg.get_region(), Region::Europe));
+        assert!(matches!(Country::Monaco.get_region(), Region::Europe));
+        assert!(matches!(Country::Spain.get_region(), Region::Europe));
         assert!(matches!(
-            Country::Germany.get_continent(),
-            Continent::Europe
-        ));
-        assert!(matches!(
-            Country::Luxembourg.get_continent(),
-            Continent::Europe
-        ));
-        assert!(matches!(Country::Monaco.get_continent(), Continent::Europe));
-        assert!(matches!(Country::Spain.get_continent(), Continent::Europe));
-        assert!(matches!(
-            Country::UnitedKingdom.get_continent(),
-            Continent::Europe
+            Country::UnitedKingdom.get_region(),
+            Region::Europe
         ));
     }
 }
